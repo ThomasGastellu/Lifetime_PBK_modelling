@@ -285,7 +285,7 @@ for (i in c(1:10)){
   Result_Arsenic <- as.data.frame(Result_Arsenic)
   Result_Arsenic <- Result_Arsenic[,c("time","UAs", "UAscr","KAs")]
   Result_Arsenic <- aggregate(Result_Arsenic[,c("UAs","UAscr","KAs")], by = list(Result_Arsenic$time), mean)
-  As_Urinecr <- rbind(As_Urinecr, Result_Arsenic$UAs)
+  As_Urinecr <- rbind(As_Urinecr, Result_Arsenic$UAscr)
   As_Urine <- rbind(As_Urine, Result_Arsenic$UAs)
   As_Kidney <- rbind(As_Kidney, Result_Arsenic$KAs)
   
