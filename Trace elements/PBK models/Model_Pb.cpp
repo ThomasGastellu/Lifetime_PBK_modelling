@@ -573,7 +573,7 @@ double vmarr_yest = 0;
 if(SEXBABY == 1){vmarr_yest = (0.05 + (0.0138 - 0.05) * exp(-0.112 * yest)) * wbw0;}
 else{vmarr_yest = (0.045 + (0.0138 - 0.045)*exp(-0.136 * yest)) * wbw0;}
 
-// Richly perfused tissue (Breast + Thyroid + Spleen + Pancreas + Adrenals + Gonads + Lungs)
+// Rapidly perfused tissue (Breast + Thyroid + Spleen + Pancreas + Adrenals + Gonads + Lungs)
 
 // Breast (Beaudouin et al. (2010))
 double vbreast = 1;
@@ -773,7 +773,7 @@ double wbw_35_f = vfat_35 + vbr_35 + vk_35 + vhair_35 + vb_35 + vl_35 + vheart_3
 double wbw_yest_f = vfat_yest + vbr_yest + vk_yest + vhair_yest + vb_yest + vl_yest + vheart_yest + vd_yest + vm_yest + vs_yest + vbone_yest + vmarr_yest + vstomach_yest + vintestine_yest + vbreast_yest + vthyr_yest + vspleen_yest + vpancreas_yest + vadrenal_yest + vgonads_yest + vlungs_yest;
 
 
-double vrich = vbreast + vthyr + vspleen + vpancreas + vadrenal + vgonads + vlungs + vstomach + vintestine + vbr;
+double vrapid = vbreast + vthyr + vspleen + vpancreas + vadrenal + vgonads + vlungs + vstomach + vintestine + vbr;
 double vslow = vheart + vd + vm + vs + vfat + vmarr; 
 
 /// Cardiac output
@@ -911,7 +911,7 @@ double CL   = LIVER/vl;                                   // Concentration of le
 // Pb in kidney
 double CK   = KIDNEY/vk;                                  // Concentration of lead in kidney (µg/L)
 // Pb in well-perfused tissues
-double CW   = RICHLY/vrich;                                  // Concentration of lead in well-perfused tissues (µg/L)
+double CW   = RAPIDLY/vrapid;                                  // Concentration of lead in well-perfused tissues (µg/L)
 // Pb in poorly-perfused tissues
 double CP   = POORLY/vslow;                                  // Concentration of lead in poorly-perfused tissues (µg/L)
 // Pb in metabolically active region of cortical bone
@@ -1051,15 +1051,15 @@ dxdt_TVB = TRABECULAR;
 dxdt_LIVER = qliver*((BLOOD/vb)-(PLASMA*(LIVER/(vl*PL)) + HCT*(LIVER/(vl*PL))*(G+BIND/(KBIND+(LIVER/(vl*PL)))))) + RAGI - (CLL*LIVER/(vl*PL));
 
 dxdt_BLOOD = qliver*(PLASMA*(LIVER/(vl*PL)) + HCT*(LIVER/(vl*PL))*(G+BIND/(KBIND+(LIVER/(vl*PL))))) + qk*(PLASMA*(KIDNEY/(vk*PK)) + HCT*(KIDNEY/(vk*PK))*(G+BIND/(KBIND+(KIDNEY/(vk*PK))))) + 
-  qslow*(PLASMA*(POORLY/(vslow*PP)) + HCT*(POORLY/(vslow*PP))*(G+BIND/(KBIND+(POORLY/(vslow*PP))))) + 
-  qrapid*(PLASMA*(RICHLY/(vrich*PW)) + HCT*(RICHLY/(vrich*PW))*(G+BIND/(KBIND+(RICHLY/(vrich*PW))))) + 
+  qslow*(PLASMA*(SLOWLY/(vslow*PP)) + HCT*(SLOWLY/(vslow*PP))*(G+BIND/(KBIND+(SLOWLY/(vslow*PP))))) + 
+  qrapid*(PLASMA*(RAPIDLY/(vrapid*PW)) + HCT*(RAPIDLY/(vrapid*PW))*(G+BIND/(KBIND+(RAPIDLY/(vrapid*PW))))) + 
   CQBC*CCBHC + CQBA*CBDA + TQBC*TCBHC + TQBA*TCBHA + RALUNG - Qtot*(BLOOD/vb);
 
 dxdt_KIDNEY = qk*((BLOOD/vb)-(PLASMA*(KIDNEY/(vk*PK)) + HCT*(KIDNEY/(vk*PK))*(G+BIND/(KBIND+(KIDNEY/(vk*PK))))))-((CLK*KIDNEY/(vk*PK)));
 
-dxdt_RICHLY = qrapid*((BLOOD/vb)-(PLASMA*(RICHLY/(vrich*PW)) + HCT*(RICHLY/(vrich*PW))*(G+BIND/(KBIND+(RICHLY/(vrich*PW))))));
+dxdt_RAPIDLY = qrapid*((BLOOD/vb)-(PLASMA*(RAPIDLY/(vrapid*PW)) + HCT*(RAPIDLY/(vrapid*PW))*(G+BIND/(KBIND+(RAPIDLY/(vrapid*PW))))));
 
-dxdt_POORLY = qslow*((BLOOD/vb)-(PLASMA*(POORLY/(vslow*PP)) + HCT*(POORLY/(vslow*PP))*(G+BIND/(KBIND+(POORLY/(vslow*PP))))));
+dxdt_SLOWLY = qslow*((BLOOD/vb)-(PLASMA*(SLOWLY/(vslow*PP)) + HCT*(SLOWLY/(vslow*PP))*(G+BIND/(KBIND+(SLOWLY/(vslow*PP))))));
 
 dxdt_CAMC   = CRAFBC - CRARBC - CRFBON*CAMC;
 
@@ -1084,7 +1084,7 @@ dxdt_AB7 = (D*CVBONEA*L/1000)*((AB6/(1e-33+CVBONEA*F6))*S6+(AB8/(1e-33+CVBONEA*F
 dxdt_AB8 = (D*CVBONEA*L/1000)*((AB7/(1e-33+CVBONEA*F7))*S7-(AB8/(1e-33+CVBONEA*F8))*S7)+F8*(CRAFBA-CRARBA+CRFBON*CAMC);
 
 
-$CMT DIET DUST SOIL AIR CVB TVB KIDNEY POORLY LIVER RICHLY BLOOD CAMC TAMC TAMA AB1 AB2 AB3 AB4 AB5 AB6 AB7 AB8
+$CMT DIET DUST SOIL AIR CVB TVB KIDNEY SLOWLY LIVER RAPIDLY BLOOD CAMC TAMC TAMA AB1 AB2 AB3 AB4 AB5 AB6 AB7 AB8
 
 $CAPTURE CB RAKX UPb UPbcr ucr CK RVBONEX vbone QCG Qtot CBRR TBRR BRRCMAX CKLOSS CVBONE CBFR CBRRO vbone_35 wbw wbw0 Qtot wbw_f vbr vfat vk vhair vb vp vrbc vl vheart vd vm vs vbone vmarr vstomach
-          vintestine vbreast vthyr vspleen vpancreas vgonads vlungs vadrenal CVBONECMAX FBFR vslow vrich qslow qrapid Qtot
+          vintestine vbreast vthyr vspleen vpancreas vgonads vlungs vadrenal CVBONECMAX FBFR vslow vrapid qslow qrapid Qtot
