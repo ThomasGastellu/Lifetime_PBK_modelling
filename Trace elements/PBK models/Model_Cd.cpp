@@ -361,7 +361,7 @@ dxdt_PLASMA = UPTAKE3 + k10 * OTHER + k13 * LIVER - k9*PLASMA - k11 * PLASMA - k
 
 dxdt_RBC = PLASMA * kx - k16 * RBC;                                                                           // Red Blood Cells
 
-dxdt_META = UPTAKE2 + k14 * LIVER + k16 * RBC - k17 * META - k17b * META;                                     // Metallothionein
+dxdt_META = UPTAKE2 + k14 * LIVER + k16 * RBC - k17x * META - k17b * META;                                     // Metallothionein
 
 double BLOOD = (RBC + k20 * (PLASMA + META))/vb;                                                            // total blood
 
