@@ -418,10 +418,10 @@ double wbw = 0;
 	 // Inorganic Arsenic
 	    double Ka3       = 0.004*(60*24);	          // Oral absorption As3 (day-1)
 	    double Ka5       = 0.003*(60*24);	          // Oral absorption As5 (day-1)
-    	double Frac      = 0.8;				  // Fraction absorbed
-    	double kred5     = 0.003*(60*24);	          // Reduction As5 -> As3
+    	    double Frac      = 0.8;			  // Fraction absorbed
+    	    double kred5     = 0.003*(60*24);	          // Reduction As5 -> As3
 	    double kox3      = 0.25;	                  // Oxydation As3 -> As5
-	    double V3mma     = (5.3e-07)*(60*24);		  // Vmax As3 -> MMA (en mol/day)
+	    double V3mma     = (5.3e-07)*(60*24);	  // Vmax As3 -> MMA (en mol/day)
 	    double V3dma     = (2e-06)*(60*24);		  // Vmax As3 -> DMA (en mol/day)
 	    double K3mma     = 3e-06;	                  // Michaelis-Menten constant As3 -> MMA
 	    double K3dma     = 3e-06;	                  // Michaelis-Menten constant As3 -> DMA
@@ -431,14 +431,14 @@ double wbw = 0;
 	 // MMA
 	    double koxm3     = 0.63;	                  // Oxydation MMA3 -> MMA5
 	    double kredm5    = 0.008*(60*24);		  // Reduction MMA5 -> MMA3
-	    double Vm3dma    = (6.6e-07)*(60*24);		  // Vmax MMA3 -> DMA3 (en mol/sem)
+	    double Vm3dma    = (6.6e-07)*(60*24);	  // Vmax MMA3 -> DMA3 (en mol/day)
 	    double Km3dma    = 3e-06;	                  // Michaelis-Menten constant MMA3 -> DMA3
-	    double Kurinemma = 0.3*(60*24);		          // Elimination urinaire MMA
+	    double Kurinemma = 0.3*(60*24);		  // Elimination urinaire MMA
 
 	 // DMA
 	    double koxd3     = 0.65;	                  // Oxydation DMA3 -> DMA5
 	    double kredd5    = 0.004*(60*24);		  // Reduction DMA5 -> DMA3
-	    double Kurinedma = 0.13*(60*24);	          // Elimination urinaire MMA
+	    double Kurinedma = 0.13*(60*24);	          // Elimination urinaire DMA
 
 
 //// Modification of the exposure over life
