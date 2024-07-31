@@ -882,23 +882,6 @@ double CQBA = CQB - CQBC;
 // Poorly-perfused tissues blood flow (L/day)
 double qslow = Qtot - (qliver+qk+qrapid+qbone);
 
-/// Volume of organs (L)
-double VBLC   = 0.067;				// Total blood volume (L/kg bw)
-double VLC    = 0.025;				// Liver volume in the adult (L/kg bw)
-double VKC    = 0.0085;				// Kidney volume in the adult (L/kg bw)
-double VBLWPC = 0.0576;				// Volume of blood in well-perfused tissues (L/kg bw)
-double VWC    = 0.16;				  // Volume of well-perfusing tissues, including blood, liver and kidney in the adult (L/kg bw)
-double VPC    = 1 - VWC;			// Volume of poorly-perfused tissues, including bone, in the adult (L/kg bw)
-
-double VBL   = VBLC*wbw;				            // Total blood volume (L)
-double VBLWP = VBLWPC*wbw;			            // Blood volume in well-perfused tissues (L)
-double VBLPP = VBL - VBLWP;			            // Blood volume in poorly-perfused tissues (L)
-double VL    = VLC*wbw;	                    // Liver volume (L)
-double VK    = VKC*wbw;	                    // Kidney volume (L)
-double VWT   = VWC*wbw;	                    // Total volume of well-perfused tissues (L)
-double VW    = VWT - (VL + VK + VBLWP);		  // Volume of other well-perfused tissues (L)
-double VP    = wbw - (VWT + VBLPP + VBONE);	// Volume of other poorly-perfused tissues (L)
-
 /// Concentration in organs (µg/kg)
 // Pb in blood
 
