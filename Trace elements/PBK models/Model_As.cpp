@@ -572,7 +572,7 @@ $ODE
 // DMA
   // Lung
     dxdt_LUNGD3 = kredd5*LUNGD5 - koxd3*LUNGD3 - Kurinedma*(LUNGD3/pludma);
-    dxdt_LUNGD5 = Q_f*VENOUSD5/vve - kredd5*LUNGD5 - Q*LUNGD5/vlungs*pludma + koxd3*LUNGD3;
+    dxdt_LUNGD5 = Q_f*VENOUSD5/vve - kredd5*LUNGD5 - Q_f*LUNGD5/vlungs*pludma + koxd3*LUNGD3;
     
   // Gut
     dxdt_GUTD5 = qgut*ARTERIALD5/vart - qgut*GUTD5/vgut*pgdma;
