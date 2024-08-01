@@ -915,30 +915,30 @@ else{CCBHC = 0;}
 double CRVAFA = LEAD*CBFRA;                                   // Clearance of lead from blood during mineralization of newly-apposed mature cortical bone engaged in remodeling (L/day)
 double CRAFBA = CRVAFA*CPLASMA;                               // Rate of deposition of lead in metabolically active region of mature cortical bone engaged in remodeling (µg/day)
 double CRARBA = CBRRA*CCB;                                    // Rate of return of lead to blood with resorption of mature cortical bone engaged in remodeling (µg/day)
-double CRAMBA = CRARBA - CRAFBA;                              // Net rate of change of amount of lead in blood perfusing the metabolically active region of mature cortical bone engaged in remodeling (mg/day)
-double CCBHA  = (BLOOD/vb) + CRAMBA/(CQBA+1e-33);                      // Concentration of lead in blood leaving the metabolically active region of mature cortical bone engages in remodelong (mg/L)
+double CRAMBA = CRARBA - CRAFBA;                              // Net rate of change of amount of lead in blood perfusing the metabolically active region of mature cortical bone engaged in remodeling (µg/day)
+double CCBHA  = (BLOOD/vb) + CRAMBA/(CQBA+1e-33);                      // Concentration of lead in blood leaving the metabolically active region of mature cortical bone engages in remodelong (µg/L)
 double CCBPHA = ((CCBHA - HCT*BIND - G*HCT*KBIND - PLASMA*KBIND)/(2*(PLASMA + HCT*G)))+(pow((pow((HCT*BIND + G*HCT*KBIND + PLASMA*KBIND - CCBHA),2) + 4*KBIND*CCBHA*(PLASMA + HCT*G)),0.5)/(2*(PLASMA + HCT*G)));	// Concentration of lead in plasma leaving the metabolically active region of mature cortical bone engaged in remodeling
 
 // Pb in trabecular bone
 double TRVAFC = LEAD*TBFRC;				// Clearance of lead from blood during mineralization of newly-apposed trabecular bone engaged in active modeling during ggrowth (L/day)
-double TRAFBC = TRVAFC*CPLASMA;				// Rate of deposition of lead in trabecular bone engaged in active modeling during growth (mg/day)
-double TCMC   = 1;					// Concentration of lead in trabecular bone engaged in active modeling during growth (mg/L)
+double TRAFBC = TRVAFC*CPLASMA;				// Rate of deposition of lead in trabecular bone engaged in active modeling during growth (µg/day)
+double TCMC   = 1;					// Concentration of lead in trabecular bone engaged in active modeling during growth (µg/L)
 if(year < 25){TCMC = TAMC/(TVBONEC+1e-33);}
 else{TCMC = 0;}
-double TRARBC = TBRRC * TCMC;				// Rate of return of lead to plasma woth resorption of trabecular bone engaged in active modeling during growth (mg/day)
-double TRAMBC = TRARBC - TRAFBC;			// Net rate of change of amount of lead in blood perfusing trabecular bone engaged in active modeling during growth (mg/day)
-double TCBHC = 1;					// Concentration of lead in blood leaving trabecular bone engaged in active modeling during growth (mg/L)
+double TRARBC = TBRRC * TCMC;				// Rate of return of lead to plasma woth resorption of trabecular bone engaged in active modeling during growth (µg/day)
+double TRAMBC = TRARBC - TRAFBC;			// Net rate of change of amount of lead in blood perfusing trabecular bone engaged in active modeling during growth (µg/day)
+double TCBHC = 1;					// Concentration of lead in blood leaving trabecular bone engaged in active modeling during growth (µg/L)
 if(TBFRA < TBFR){TCBHC = (BLOOD/vb) + TRAMBC/(TQBC + 1e-33);}
 else{TCBHC = 0;}
 
 double TRVAFA = LEAD*TBFRA;				// Clearance of lead from blood during mineralization of newly-apposed mature trabecular bone engaged in remodeling (L/day)
-double TRAFBA = TRVAFA*CPLASMA;				// Rate of  deposition of lead in mature trabecular bone engaged in remodeling (mg/day)
-double TCMA   = 1;					// Concentration of lead in mature trabecular bone engaged in remodeling (mg/L)
+double TRAFBA = TRVAFA*CPLASMA;				// Rate of  deposition of lead in mature trabecular bone engaged in remodeling (µg/day)
+double TCMA   = 1;					// Concentration of lead in mature trabecular bone engaged in remodeling (µg/L)
 if(year < 25){TCMA = TAMA/(TVBONEA+1e-33);}
 else{TCMA = TAMA/TVBONE;}
-double TRARBA = TBRRA*TCMA;				// Rate of return of lead to blood with resorption of mature trabecular bone engaged in remodeling (mg/day)
-double TRAMBA = TRARBA - TRAFBA;			// Net rate of change of amount of lead in blood perfusing mature trabecular bone engaged in remodeling (mg/day)
-double TCBHA = (BLOOD/vb) + TRAMBA/(TQBA + 1e-33);		// Concentration of lead in blood leaving mature trabecular bone engaged in remodeling (mg/L)
+double TRARBA = TBRRA*TCMA;				// Rate of return of lead to blood with resorption of mature trabecular bone engaged in remodeling (µg/day)
+double TRAMBA = TRARBA - TRAFBA;			// Net rate of change of amount of lead in blood perfusing mature trabecular bone engaged in remodeling (µg/day)
+double TCBHA = (BLOOD/vb) + TRAMBA/(TQBA + 1e-33);		// Concentration of lead in blood leaving mature trabecular bone engaged in remodeling (µg/L)
 
 // Lead in diffusion region of mature cortical bone
 double VTOTAL = PI*pow(RAD8,2);
@@ -951,10 +951,10 @@ double F6 = V6/VTOTAL;
 double F7 = V7/VTOTAL;
 double F8 = V8/VTOTAL;
 double CB1 = AB1/(1e-33+CVBONEA*F1);
-double RDBIN = (S*L*CVBONEA/1000)*(P*CCBPHA);		       // Rate of loss of lead from blood into mature cortical bone by diffusion (mg/day)
-double RDBEX = (S*L*CVBONEA/1000)*(Rad*CB1); 		       // Rate of return of lead to blood from mature cortical bone by diffusion (mg/day)
-double RDB   = RDBEX - RDBIN;				       // Net rate of change of amont of lead in blood perfusing the diffusion region of mature cortical bone (mg/day)
-double CBDA  = 0;                                              // Concentration of lead in blood leaving the diffusion region of mature cortical bone (mg/L)
+double RDBIN = (S*L*CVBONEA/1000)*(P*CCBPHA);		       // Rate of loss of lead from blood into mature cortical bone by diffusion (µg/day)
+double RDBEX = (S*L*CVBONEA/1000)*(Rad*CB1); 		       // Rate of return of lead to blood from mature cortical bone by diffusion (µg/day)
+double RDB   = RDBEX - RDBIN;				       // Net rate of change of amont of lead in blood perfusing the diffusion region of mature cortical bone (µg/day)
+double CBDA  = 0;                                              // Concentration of lead in blood leaving the diffusion region of mature cortical bone (µg/L)
 if(TIME >= 1){CBDA = CCBHA + RDB/(CQBA+1e-33);}
 
 /// Excretion of Lead
