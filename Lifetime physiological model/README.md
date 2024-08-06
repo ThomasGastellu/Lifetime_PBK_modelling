@@ -1,7 +1,3 @@
----
-title: "Read Me"
----
-
 Under the scope of the following paper: Gastellu et al. 2024. A Comprehensive Library of Lifetime Physiological Equations for PBK Models: Enhancing Dietary Exposure Modelling with Mercury as Case Study.
 
 In the present repository, the R codes are provided to implement the real-life volume growths of organs over a lifetime in an age-specific PBK model.
