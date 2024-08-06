@@ -1,4 +1,4 @@
-### Lifetime physiological models
+# Lifetime physiological models
 
 Under the scope of the following paper: Gastellu et al. 2024. A Comprehensive Library of Lifetime Physiological Equations for PBK Models: Enhancing Dietary Exposure Modelling with Mercury as Case Study.
 
