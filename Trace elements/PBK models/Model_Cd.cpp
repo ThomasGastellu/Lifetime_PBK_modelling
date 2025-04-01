@@ -302,9 +302,9 @@ double ucr= (0.032+2.098e-02*year+9.104e-03*pow(year,2)-4.550e-04*pow(year,3)+7.
   if (year>70) {ucr=(0.032+2.098e-02*70+9.104e-03*pow(70,2)-4.550e-04*pow(70,3)+7.578e-06*pow(70,4)-4.232e-08*pow(70,5))*Delta_creat;}
 
 double UPTAKE2=k8;
-  if ((k7*UPTAKE1) <= k8) {UPTAKE2=k7*UPTAKE1;}   // UPTAKE2 flow to blood pool has a maximum = k8
+  if ((k7*UPTAKE1) <= k8) {UPTAKE2=k7*UPTAKE1;}   // UPTAKE2 goes to metallothionein (b3) flow to blood pool has a maximum = k8
 
-double UPTAKE3 = UPTAKE1 - UPTAKE2;               // UPTAKE3 goes to metallothionein (b3)
+double UPTAKE3 = UPTAKE1 - UPTAKE2;               // UPTAKE3 flow to blood pool
 
 double ur = META * k17b + KIDNEY * k19x;          // Dose of Cd in urine (in ug)
 
@@ -357,7 +357,7 @@ dxdt_GUT = k5 * (DIET * wbw_f + SOIL + DUST + k1_cig * Cig + k1_dust * AIR + k4 
 
 dxdt_UPTAKE1 =  k3*LUNG + k6*GUT - UPTAKE2 - UPTAKE3;                                                         // uptake pool
 
-dxdt_PLASMA = UPTAKE3 + k10 * OTHER + k13 * LIVER - k9*PLASMA - k11 * PLASMA - kx * PLASMA;                   // Plasma
+dxdt_PLASMA = UPTAKE3 + k10 * OTHER + k13 * LIVER - k9*PLASMA - k11 * PLASMA - kx * PLASMA + k18 *KIDNEY - k12 * PLASMA;                   // Plasma
 
 dxdt_RBC = PLASMA * kx - k16 * RBC;                                                                           // Red Blood Cells
 
@@ -375,7 +375,7 @@ dxdt_OTHER = k9 * PLASMA - k10 * OTHER;                                         
 
 double wb = BLOOD + LIVER + KIDNEY + OTHER + LUNG + GUT;                                                // body burden
 
-dxdt_FECES = k11*PLASMA + k15*LIVER;                                                                          // feces
+dxdt_FECES = k11*PLASMA + k15*LIVER + (1-k5)*(wbw*DIET);                                                      // feces
 
 dxdt_URINE = META * k17b + KIDNEY * k19x;                                                                     // urine cumulative
 
