@@ -36,7 +36,7 @@ model_THg <- mread("Model_THg", file = "PBK models/Model_THg.cpp")
 traj_diet_mehg <- sapply(pop_ref, function(x) x$expo_mehg)
 traj_diet_ihg <- sapply(pop_ref, function(x) x$expo_hgi)
 traj_soil_hg <- sapply(pop_ref, function(x) x$soil_hg)
-traj_air_hg <- sapply(pop_ref, function(x) x$air_hg/1000)
+traj_air_hg <- sapply(pop_ref, function(x) x$air_hg/1000000) ## Conversion into µg/L
 
 
 rm(pop_ref)
