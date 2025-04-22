@@ -37,7 +37,7 @@ model_Pb <- mread("Model_Pb", file = "PBK models/Model_Pb.cpp")
 traj_diet_pb <- sapply(pop_ref, function(x) x$expo_pb)
 traj_soil_pb <- sapply(pop_ref, function(x) x$soil_pb)
 traj_dust_pb <- sapply(pop_ref, function(x) x$dust_pb)
-traj_air_pb <- sapply(pop_ref, function(x) x$air_pb/1000)
+traj_air_pb <- sapply(pop_ref, function(x) x$air_pb/1000000) ## Conversion into µg/L
 
 rm(pop_ref)
 
