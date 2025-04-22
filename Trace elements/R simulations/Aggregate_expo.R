@@ -54,20 +54,20 @@ model_THg <- mread("Model_THg", file = "PBK models/Model_THg.cpp")
 traj_diet_cd <- sapply(pop_ref, function(x) x$expo_cd)
 traj_soil_cd <- sapply(pop_ref, function(x) x$soil_cd)
 traj_dust_cd <- sapply(pop_ref, function(x) x$dust_cd)
-traj_air_cd <- sapply(pop_ref, function(x) x$air_cd/1000) 
+traj_air_cd <- sapply(pop_ref, function(x) x$air_cd/1000000) ## Conversion into µg/L 
 traj_diet_pb <- sapply(pop_ref, function(x) x$expo_pb)
 traj_soil_pb <- sapply(pop_ref, function(x) x$soil_pb)
 traj_dust_pb <- sapply(pop_ref, function(x) x$dust_pb)
-traj_air_pb <- sapply(pop_ref, function(x) x$air_pb/1000)
+traj_air_pb <- sapply(pop_ref, function(x) x$air_pb/1000000) ## Conversion into µg/L
 traj_diet_as3 <- sapply(pop_ref, function(x) x$expo_asIII)
 traj_diet_as5 <- sapply(pop_ref, function(x) x$expo_asV)
-traj_soil_as <- sapply(pop_ref, function(x) x$soil_as/1000)
-traj_air_as <- sapply(pop_ref, function(x) x$air_as)
+traj_soil_as <- sapply(pop_ref, function(x) x$soil_as)
+traj_air_as <- sapply(pop_ref, function(x) x$air_as/1000000) ## Conversion into µg/L
 traj_dust_as <- sapply(pop_ref, function(x) x$dust_as)
 traj_diet_mehg <- sapply(pop_ref, function(x) x$expo_mehg)
 traj_diet_ihg <- sapply(pop_ref, function(x) x$expo_hgi)
 traj_soil_hg <- sapply(pop_ref, function(x) x$soil_hg)
-traj_air_hg <- sapply(pop_ref, function(x) x$air_hg/1000)
+traj_air_hg <- sapply(pop_ref, function(x) x$air_hg/1000000) ## Conversion into µg/L
 
 
 rm(pop_ref)
