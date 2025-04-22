@@ -37,7 +37,7 @@ model_Cd <- mread("Model_Cd", file = "PBK models/Model_Cd.cpp")
 traj_diet_cd <- sapply(pop_ref, function(x) x$expo_cd)
 traj_soil_cd <- sapply(pop_ref, function(x) x$soil_cd)
 traj_dust_cd <- sapply(pop_ref, function(x) x$dust_cd)
-traj_air_cd <- sapply(pop_ref, function(x) x$air_cd/1000) 
+traj_air_cd <- sapply(pop_ref, function(x) x$air_cd/1000000) 
 
 
 rm(pop_ref)
