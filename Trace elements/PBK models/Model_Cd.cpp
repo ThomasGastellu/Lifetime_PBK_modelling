@@ -353,7 +353,7 @@ dxdt_DUST = - DUST;                                                             
 
 dxdt_LUNG = k2_dust*(AIR * VInhalation) + k2_cig * Cig - LUNG*(k3 + k4);                                      // pulmonary region at t=T
 
-dxdt_GUT = k5 * (DIET * wbw_f + SOIL + DUST + k1_cig * Cig + k1_dust * AIR + k4 * LUNG) - k6 * GUT;  // GI-tract
+dxdt_GUT = k5 * (DIET * wbw_f + SOIL + DUST + k1_cig * Cig + k1_dust * (AIR * VInhalation) + k4 * LUNG) - k6 * GUT;  // GI-tract
 
 dxdt_UPTAKE1 =  k3*LUNG + k6*GUT - UPTAKE2 - UPTAKE3;                                                         // uptake pool
 
