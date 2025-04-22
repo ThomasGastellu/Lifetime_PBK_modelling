@@ -35,8 +35,8 @@ model_As <- mread("Model_As", file = "PBK models/Model_As.cpp")
 # Dietary exposure is in µg/kg/day.
 traj_diet_as3 <- sapply(pop_ref, function(x) x$expo_asIII)
 traj_diet_as5 <- sapply(pop_ref, function(x) x$expo_asV)
-traj_soil_as <- sapply(pop_ref, function(x) x$soil_as/1000)
-traj_air_as <- sapply(pop_ref, function(x) x$air_as)
+traj_soil_as <- sapply(pop_ref, function(x) x$soil_as)
+traj_air_as <- sapply(pop_ref, function(x) x$air_as/1000000)
 traj_dust_as <- sapply(pop_ref, function(x) x$dust_as)
 
 rm(pop_ref)
