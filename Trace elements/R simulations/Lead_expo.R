@@ -31,13 +31,13 @@ Pb_Kidney <- tibble()
 model_Pb <- mread("Model_Pb", file = "PBK models/Model_Pb.cpp")
 
 ### Selection of exposure trajectories to different sources of exposure
-# Air contaminations are in ng/m3;
+# Air contaminations are in µg/m3;
 # Soil and dust contamination are in µg/g of soil/dust;
 # Dietary exposure is in µg/kg/day.
 traj_diet_pb <- sapply(pop_ref, function(x) x$expo_pb)
 traj_soil_pb <- sapply(pop_ref, function(x) x$soil_pb)
 traj_dust_pb <- sapply(pop_ref, function(x) x$dust_pb)
-traj_air_pb <- sapply(pop_ref, function(x) x$air_pb/1000000) ## Conversion into µg/L
+traj_air_pb <- sapply(pop_ref, function(x) x$air_pb/1000) ## Conversion into µg/L
 
 rm(pop_ref)
 
