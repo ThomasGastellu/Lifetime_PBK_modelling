@@ -48,7 +48,7 @@ model_As <- mread("Model_As", file = "PBK models/Model_As.cpp")
 model_THg <- mread("Model_THg", file = "PBK models/Model_THg.cpp")
 
 ### Selection of exposure trajectories to different sources of exposure
-# Air contaminations are in ng/m3;
+# Air contaminations are in ng/m3; except for lead (µg/m3)
 # Soil and dust contamination are in µg/g of soil/dust;
 # Dietary exposure is in µg/kg/day.
 traj_diet_cd <- sapply(pop_ref, function(x) x$expo_cd)
@@ -58,7 +58,7 @@ traj_air_cd <- sapply(pop_ref, function(x) x$air_cd/1000000) ## Conversion into 
 traj_diet_pb <- sapply(pop_ref, function(x) x$expo_pb)
 traj_soil_pb <- sapply(pop_ref, function(x) x$soil_pb)
 traj_dust_pb <- sapply(pop_ref, function(x) x$dust_pb)
-traj_air_pb <- sapply(pop_ref, function(x) x$air_pb/1000000) ## Conversion into µg/L
+traj_air_pb <- sapply(pop_ref, function(x) x$air_pb/1000) ## Conversion into µg/L
 traj_diet_as3 <- sapply(pop_ref, function(x) x$expo_asIII)
 traj_diet_as5 <- sapply(pop_ref, function(x) x$expo_asV)
 traj_soil_as <- sapply(pop_ref, function(x) x$soil_as)
