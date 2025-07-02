@@ -150,11 +150,11 @@ double wbw = 0;
     // Beaudouin et al. (2010)
     double vb = 0;
         if(SEXBABY == 1){
-            if(year < 1){vb = (-0.027 * pow(year,2) + 0.077 * year) * wbw;}
+            if(year < 1){vb = (-0.027 * pow(year,1) + 0.077) * wbw;}
             else{vb = (0.0761 * (1/1 + exp(-0.683 * year + 0.946))) * wbw;}
         }
         else{
-            if(year < 1){vb = (-0.0273 * pow(year,2) + 0.0771 * year) * wbw;}
+            if(year < 1){vb = (-0.0273 * pow(year,1) + 0.0771) * wbw;}
             if(year >=1 && year < 14.019723){vb = (3.28e-05 * pow(year,3) - 1.21e-03 * pow(year,2) + 1.24e-02 * year + 3.86e-02) * wbw;}
             else{vb = 0.065 * wbw;}
         }
