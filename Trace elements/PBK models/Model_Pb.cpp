@@ -437,11 +437,11 @@ else{vl_yest = (0.0233 + (0.038 - 0.0233) * exp(-0.122 * yest)) * wbw0 * Delta_L
 // Beaudouin et al. (2010)
 double vb = 0;
 if(SEXBABY == 1){
-  if(year < 1.4){vb = (-0.0273 * pow(year,2) + 0.0771 * year) * wbw;}
+  if(year < 1.4){vb = (-0.0273 * pow(year,1) + 0.0771) * wbw;}
   else{vb = (0.0761 + (0.0289 - 0.0761) * exp(-0.592 * year)) * wbw;}
 }
 else{
-  if(year < 1){vb = (-0.0273 * pow(year,2) + 0.0771 * year) * wbw;}
+  if(year < 1){vb = (-0.0273 * pow(year,1) + 0.0771) * wbw;}
   if(year >=1 && year < 20){vb = (3.28e-05 * pow(year,3) - 1.21e-03 * pow(year,2) + 1.24e-02 * year + 3.86e-02) * wbw;}
   else{vb = 0.065 * wbw;}
 }
