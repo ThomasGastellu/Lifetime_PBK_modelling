@@ -167,15 +167,15 @@ else{
   else{TBBMC_yest = 1.86070 + ((2.14976 - 0.74042)/(1 + 1 * exp((12.35466 - yest)/1.35750))) - (0.0056 * yest);}
 }
 
-double vbone = (TBBMC/0.65)/0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
+double vbone = (TBBMC/0.65)*0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
 
-double vbone_25 = (TBBMC_25/0.65)/0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
+double vbone_25 = (TBBMC_25/0.65)*0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
 
-double vbone_30 = (TBBMC_30/0.65)/0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
+double vbone_30 = (TBBMC_30/0.65)*0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
 
-double vbone_35 = (TBBMC_35/0.65)/0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
+double vbone_35 = (TBBMC_35/0.65)*0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
 
-double vbone_yest = (TBBMC_yest/0.65)/0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
+double vbone_yest = (TBBMC_yest/0.65)*0.5 * (Delta_Bone_M * SEXBABY + (1 - SEXBABY) * Delta_Bone_F);
 
 
 
@@ -348,7 +348,7 @@ else{
 double HCT = 0;
 if(year <= 2){HCT = 0.359;}
 if(year > 2 && year < 18){HCT = 1.12815e-06 * pow(year,3) - 1.72362e-04 * pow(year,2) + 8.15264e-03 * year + 0.34337590;}
-else{HCT = 1.12815e-06 * pow(18,3) - 1.72362e-04 * pow(18,2) + 8.15264e-03 * 18 + 0.34337590;}
+if(year >= 18){HCT = 1.12815e-06 * pow(18,3) - 1.72362e-04 * pow(18,2) + 8.15264e-03 * 18 + 0.34337590;}
 
 //// Volume of organs
 
@@ -442,8 +442,8 @@ if(SEXBABY == 1){
 }
 else{
   if(year < 1){vb = (-0.0273 * pow(year,1) + 0.0771) * wbw;}
-  if(year >=1 && year < 20){vb = (3.28e-05 * pow(year,3) - 1.21e-03 * pow(year,2) + 1.24e-02 * year + 3.86e-02) * wbw;}
-  else{vb = 0.065 * wbw;}
+  if(year >=1 && year < 14.019723){vb = (3.28e-05 * pow(year,3) - 1.21e-03 * pow(year,2) + 1.24e-02 * year + 3.86e-02) * wbw;}
+  if(year >= 14.019723){vb = 0.065 * wbw;}
 }
 
 double vb_30 = 0;
@@ -456,13 +456,13 @@ else{vb_35 = 0.065 * WBODYCMAX;}
 
 double vb_yest = 0;
 if(SEXBABY == 1){
-  if(yest < 1){vb_yest = (-0.027 * pow(yest,2) + 0.077 * yest) * wbw0;}
+  if(yest < 1){vb_yest = (-0.027 * pow(yest,1) + 0.077) * wbw0;}
   else{vb_yest = (0.0761 + (0.0289 - 0.0761) * exp(-0.592 * yest))  * wbw0;}
 }
 else{
-  if(yest < 1){vb_yest = (-0.0273 * pow(yest,2) + 0.0771 * yest) * wbw0;}
+  if(yest < 1){vb_yest = (-0.0273 * pow(yest,1) + 0.0771) * wbw0;}
   if(yest >=1 && yest < 14.019723){vb_yest = (3.28e-05 * pow(yest,3) - 1.21e-03 * pow(yest,2) + 1.24e-02 * yest + 3.86e-02) * wbw0;}
-  else{vb_yest = 0.065 * wbw0;}
+  if(yest >= 14.019723){vb_yest = 0.065 * wbw0;}
 }
 
 double vp = (1-HCT)*vb;
@@ -692,7 +692,7 @@ if(SEXBABY == 1){
 else{
   if(yest < 1){vgonads_yest = (-1.064e-03*yest + 1.338e-03)* wbw0 * Delta_Gonad_F;}
   if(yest >= 1 && yest < 20){vgonads_yest = (2.6380e-07 * pow(yest,3) - 1.7943e-06 * pow(yest,2) - 5.6465e-06 * yest + 2.8105e-04) * wbw0 * Delta_Gonad_F;}
-  else{vgonads_yest = 0.001552 * wbw0 * Delta_Gonad_F;}
+  if(yest >= 20){vgonads_yest = 0.001552 * wbw0 * Delta_Gonad_F;}
 }
 
 // Lungs
