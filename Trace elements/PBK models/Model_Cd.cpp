@@ -103,7 +103,7 @@ double ht = 3.0;
   double hct = 0;
     if(year <= 2){hct = 0.359;}
     if(year > 2 && year < 18){hct = 1.12815e-06 * pow(year,3) - 1.72362e-04 * pow(year,2) + 8.15264e-03 * year + 0.327363;}
-    else{hct = 1.12815e-06 * pow(18,3) - 1.72362e-04 * pow(18,2) + 8.15264e-03 * 18 + 0.327363;}
+    if (year >= 18) {hct = 1.12815e-06 * pow(18,3) - 1.72362e-04 * pow(18,2) + 8.15264e-03 * 18 + 0.327363;}
         
   // Surface area (in m) Can be used in the calculation of other organs, not directly used in the model
     // Mallick et al. (2020) or Pendse et al. (2020) or Price P.S. et al. (2003)
@@ -143,12 +143,12 @@ double ht = 3.0;
     double vb = 0;
         if(SEXBABY == 1){
             if(year < 1){vb = (-0.027 * pow(year,1) + 0.077) * wbw;}
-            else{vb = (0.0761 * (1/1 + exp(-0.683 * year + 0.946))) * wbw;}
+            else{vb = (0.0761 * 1/(1 + exp(-0.683 * year + 0.946))) * wbw;}
         }
         else{
             if(year < 1){vb = (-0.0273 * pow(year,1) + 0.0771) * wbw;}
             if(year >=1 && year < 14.019723){vb = (3.28e-05 * pow(year,3) - 1.21e-03 * pow(year,2) + 1.24e-02 * year + 3.86e-02) * wbw;}
-            else{vb = 0.065 * wbw;}
+            if(year >= 14.019723){vb = 0.065 * wbw;}
         }
     double vp = (1-hct)*vb;
     double vrbc = hct*vb;
@@ -247,7 +247,7 @@ double ht = 3.0;
         else{
           if(year < 1){vgonads = (-1.064e-03*year + 1.338e-03)* wbw * Delta_Gonad_F;}
           if(year >= 1 && year < 20){vgonads = (2.6380e-07 * pow(year,3) - 1.7943e-06 * pow(year,2) - 5.6465e-06 * year + 2.8105e-04) * wbw * Delta_Gonad_F;}
-          else{vgonads = 0.001552 * wbw * Delta_Gonad_F;}
+          if(year >= 20){vgonads = 0.001552 * wbw * Delta_Gonad_F;}
         }
        
     // Lungs
