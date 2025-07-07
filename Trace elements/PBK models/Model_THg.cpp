@@ -116,7 +116,7 @@ double month = TIME/(365/12);
     //Mallick et al. (2020) or Pendse et al. (2020)
         if(year < 2){hct = 0.359;}
         if(year >=2 && year < 18){hct = ((1.12815e-06 * pow(year,3)) - (1.72362e-04 * pow(year,2)) + (8.15264e-03 * year) + 0.327363);}
-        else {hct = ((1.12815e-06 * pow(18,3)) - (1.72362e-04 * pow(18,2)) + (8.15264e-03 * 18) + 0.327363);}
+        if(year >= 18) {hct = ((1.12815e-06 * pow(18,3)) - (1.72362e-04 * pow(18,2)) + (8.15264e-03 * 18) + 0.327363);}
         
   /// Poids des organes
   
@@ -159,7 +159,7 @@ double month = TIME/(365/12);
       else{
         if(year < 1){vb = (-0.0273*year + 0.0771)*wbw;}
         if(year >= 1 && year <= 14.019723){vb = (3.28e-05*pow(year,3) - 1.21e-03*pow(year,2) + 1.24e-02*year + 3.86e-02) * wbw;}
-        else{vb = 0.065 * wbw;}
+        if(year >= 14.019723){vb = 0.065 * wbw;}
       }
       vp = (1-hct)*vb;
       vrbc = hct*vb;
@@ -214,7 +214,7 @@ double month = TIME/(365/12);
           if(year < 50){TBBMC = 0.74042 + ((2.14976-0.74042)/(1+1*exp((12.35466-year)/1.35750))) - (0*year);}
           else{TBBMC = 0.74042 + ((2.14976-0.74042)/(1+1*exp((12.35466-year)/1.35750))) - (0.0056*year);}}
           
-    vbone = (TBBMC/0.65)/0.5 * Delta_Bone;
+    vbone = (TBBMC/0.65)*0.5 * Delta_Bone;
     
   /// Bone marrow (71 % Red Marrow + 29% Yellow Marrow)
 
@@ -262,7 +262,7 @@ double month = TIME/(365/12);
         else{
           if(year < 1){vgonads = (-1.064e-03*year + 1.338e-03)* wbw * Delta_Gonad;}
           if(year >= 1 && year < 20){vgonads = (2.6380e-07*pow(year,3) - 1.7943e-06*pow(year,2) - 5.6465e-06*year + 2.8105e-04) * wbw * Delta_Gonad;}
-          else{vgonads = 0.001552 * wbw * Delta_Gonad;}}
+          if(year >= 20){vgonads = 0.001552 * wbw * Delta_Gonad;}}
        
     // Lungs
     double vlungs = 1;
