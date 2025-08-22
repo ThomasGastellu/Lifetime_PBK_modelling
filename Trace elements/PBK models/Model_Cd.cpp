@@ -234,8 +234,8 @@ double ht = 3.0;
 
     // Adrenals (Beaudouin et al. (2010))
     double vadrenal = 0;
-        if(SEXBABY == 1){vadrenal = 2.0e-04 + (1.71e-03 - 2.0e-04) * exp(-2.02 * year);}
-        else{vadrenal = 0.0002 + (0.00171 - 0.0002) * exp(-2.02 * year);}
+        if(SEXBABY == 1){vadrenal = 2.0e-04 + (1.71e-03 - 2.0e-04) * exp(-2.02 * year) * wbw;}
+        else{vadrenal = 0.0002 + (0.00171 - 0.0002) * exp(-2.02 * year) * wbw;}
     
     // Gonads / Reproductive organs
       // Beaudouin et al. (2010)
