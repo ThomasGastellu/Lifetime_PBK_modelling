@@ -151,7 +151,7 @@ double wbw = 0;
     double vb = 0;
         if(SEXBABY == 1){
             if(year < 1){vb = (-0.027 * pow(year,1) + 0.077) * wbw;}
-            else{vb = (0.0761 * (1/1 + exp(-0.683 * year + 0.946))) * wbw;}
+            else{vb = (0.0761 * 1/(1 + exp(-0.683 * year + 0.946))) * wbw;}
         }
         else{
             if(year < 1){vb = (-0.0273 * pow(year,1) + 0.0771) * wbw;}
